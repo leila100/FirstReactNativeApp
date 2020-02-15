@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 
 const GoalItem = props => {
   return (
-    <TouchableOpacity onPress={() => props.onDelete()} activeOpacity={0.8}>
+    <TouchableHighlight onPress={() => props.onDelete()} underlayColor={"maroon"}>
       <View style={styles.goalItem}>
         <Text>{props.value}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
