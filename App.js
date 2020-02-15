@@ -8,8 +8,11 @@ export default function App() {
   const [goals, setGoals] = useState([]);
 
   const addGoalHandler = goal => {
-    console.log(goal);
     setGoals(currentGoals => [...currentGoals, { id: Math.random().toString(), value: goal }]);
+  };
+
+  const deleteHandler = id => {
+    setGoals(currentGoals => currentGoals.filter(goal => goal.id !== id));
   };
 
   return (
@@ -18,7 +21,9 @@ export default function App() {
       <FlatList
         keyExtractor={(item, index) => item.id}
         data={goals}
-        renderItem={itemData => <GoalItem value={itemData.item.value} onDelete={() => console.log("Delte item!!")} />}
+        renderItem={itemData => (
+          <GoalItem value={itemData.item.value} onDelete={() => deleteHandler(itemData.item.id)} />
+        )}
       />
     </View>
   );
